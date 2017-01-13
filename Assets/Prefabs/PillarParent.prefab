@@ -40,8 +40,8 @@ GameObject:
   - component: {fileID: 4432093741359716}
   - component: {fileID: 114549755890288300}
   - component: {fileID: 114801223874459010}
-  - component: {fileID: 114022409456267056}
   - component: {fileID: 114695795622613034}
+  - component: {fileID: 114007078406578078}
   m_Layer: 0
   m_Name: PillarParent
   m_TagString: Untagged
@@ -129,7 +129,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114022409456267056
+--- !u!114 &114007078406578078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -137,11 +137,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1560082466947328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a0838809643e6548ae60730f6985912, type: 3}
+  m_Script: {fileID: 11500000, guid: b457deb2fc1a5334bb4f04ea8de108f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 1}
-  speed: -20
+  direction: {x: 0, y: 0, z: -1}
+  speed: 1
 --- !u!114 &114549755890288300
 MonoBehaviour:
   m_ObjectHideFlags: 1
