@@ -27,11 +27,12 @@ public class GameManager : MonoBehaviour
     private bool gameOver = false;
     private bool hasSaved = false;
     private float score = 0.0f;
-    private static float highscore = 0.0f;
+ 
 
     [HideInInspector]
     public int previousScore = 0;
 
+    private static float highscore = 0.0f;
     public float pointsPerUnitTravelled = 1.0f;
     public float gameSpeed = 20.0f;
     public string titleScreenName = "TitleScreen";
