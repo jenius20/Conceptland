@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     private bool gameOver = false;
     private float score = 0.0f;
-    private static float highScore = 0.0f;
+    private static float highscore = 0.0f;
 
     public float pointsPerUnitTravelled = 1.0f;
     public float gameSpeed = 20.0f;
@@ -29,20 +29,24 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
         }
-        if (gameOver)
+        if(gameOver)
         {
             if (Input.anyKeyDown)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); ;
             }
         }
-        score += pointsPerUnitTravelled * gameSpeed * Time.deltaTime;
-        if (score < highScore)
+ 
+        if (!gameOver)
         {
-            highScore = score;
+            score += pointsPerUnitTravelled * gameSpeed * Time.deltaTime;
+            if(score > highscore)
+            {
+                highscore = score;
+            }
         }
 
-
+        Debug.Log("Highscore = " + highscore);
 
 
 
@@ -50,10 +54,10 @@ public class GameManager : MonoBehaviour
 
     void OnGUI()
     {
-        int currentHighscore = (int)highScore;
+        int currentHighscore = (int)highscore;
         int currentScore = (int)score;
         GUILayout.Label("Score " + currentScore.ToString());
-        GUILayout.Label("Highscore: " + currentScore.ToString());
+        GUILayout.Label("Highscore: " + currentHighscore.ToString());
 
         if (gameOver == true)
         {
