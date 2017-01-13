@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778b43c5ccdb25a4c9bbc9349d37247e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalScale: {x: 1, y: 10, z: 1}
+  finalScale: {x: 4, y: 10, z: 4}
   time: 3
 --- !u!114 &114695795622613034
 MonoBehaviour:

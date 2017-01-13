@@ -5,56 +5,105 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    private static GameManager _instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance != null)
+            {
+                return _instance;
+            }
+            else
+            {
+                GameObject gameManager = new GameObject("GameManager");
+                _instance = gameManager.AddComponent<GameManager>();
+                return _instance;
+            }
+        }
+    }
 
     private bool gameOver = false;
     private bool hasSaved = false;
     private float score = 0.0f;
     private static float highscore = 0.0f;
 
+    [HideInInspector]
+    public int previousScore = 0;
+
     public float pointsPerUnitTravelled = 1.0f;
     public float gameSpeed = 20.0f;
+    public string titleScreenName = "TitleScreen";
 
 	// Use this for initialization
 	void Start ()
     {
-        Instance = this;
+        if (_instance != this)
+        {
+            if (_instance == null)
+            {
+                _instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+         }
+
         LoadHighScore();
+        DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
- 
 
-        if(GameObject.FindGameObjectWithTag("Player") == null)
+        if (SceneManager.GetActiveScene().name != titleScreenName)
         {
-            gameOver = true;
+            if (GameObject.FindGameObjectWithTag("Player") == null)
+            {
+                gameOver = true;
+            }
+            if (gameOver)
+            {
+                if (!hasSaved)
+                {
+                    SaveHighscore();
+                    previousScore = (int)score;
+                    hasSaved = true;
+                }
+                if (Input.anyKeyDown)
+                {
+                    SceneManager.LoadScene(titleScreenName);
+                }
+            }
+
+            if (!gameOver)
+            {
+                score += pointsPerUnitTravelled * gameSpeed * Time.deltaTime;
+                if (score > highscore)
+                {
+                    highscore = score;
+                }
+            }
         }
-        if(gameOver)
+        else
         {
-            if(!hasSaved)
-            {
-                SaveHighscore();
-                hasSaved = true;
-            }
-            if (Input.anyKeyDown)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); ;
-            }
-        }
- 
-        if (!gameOver)
-        {
-            score += pointsPerUnitTravelled * gameSpeed * Time.deltaTime;
-            if(score > highscore)
-            {
-                highscore = score;
-            }
+            //Reset stuff for next game
+            ResetGame();
         }
 
 
 
+
+    }
+
+    void ResetGame()
+    {
+        score = 0.0f;
+        gameOver = false;
+        hasSaved = false;
 
     }
 
@@ -71,14 +120,18 @@ public class GameManager : MonoBehaviour
 
     void OnGUI()
     {
-        int currentHighscore = (int)highscore;
-        int currentScore = (int)score;
-        GUILayout.Label("Score " + currentScore.ToString());
-        GUILayout.Label("Highscore: " + currentHighscore.ToString());
-
-        if (gameOver == true)
+        if (SceneManager.GetActiveScene().name != titleScreenName)
         {
-            GUILayout.Label("Game Over! Press any key to reset!");
+
+            int currentHighscore = (int)highscore;
+            int currentScore = (int)score;
+            GUILayout.Label("Score " + currentScore.ToString());
+            GUILayout.Label("Highscore: " + currentHighscore.ToString());
+
+            if (gameOver == true)
+            {
+                GUILayout.Label("Game Over! Press any key to quit!");
+            }
         }
     }
 }

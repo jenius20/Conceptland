@@ -342,6 +342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bbe88e5286b8c49a6cdb493aeec2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsPerUnitTravelled: 1
+  gameSpeed: 20
+  titleScreenName: TitleScreen
 --- !u!4 &679150136
 Transform:
   m_ObjectHideFlags: 0
@@ -559,8 +562,8 @@ MonoBehaviour:
   maxHorizontal: 100
   minVertical: 0
   maxVertical: 0
-  minSpawnTime: 0.1
-  maxSpawnTime: 0.5
+  minSpawnTime: 0.05
+  maxSpawnTime: 0.2
 --- !u!4 &1702269929
 Transform:
   m_ObjectHideFlags: 0
