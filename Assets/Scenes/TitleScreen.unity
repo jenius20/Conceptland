@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9220836d00350e243934075dfb5f315d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Level 1
+  levelName: TestingCylinder 1
 --- !u!4 &605722566
 Transform:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousScore: 0
   pointsPerUnitTravelled: 1
-  gameSpeed: 20
+  gameSpeed: 100
   titleScreenName: TitleScreen
 --- !u!4 &925073877
 Transform:
