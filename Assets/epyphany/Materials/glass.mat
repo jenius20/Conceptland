@@ -43,13 +43,13 @@ Material:
         name: _EmissionMap
       second:
         m_Texture: {fileID: 2800000, guid: b53f819735ba20c4e8b5420b46703e43, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
       second:
         m_Texture: {fileID: 2800000, guid: 3585069d208350e4d8efedb489550ea1, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
@@ -83,8 +83,14 @@ Material:
         name: _DstBlend
       second: 0
     - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
         name: _Glossiness
       second: 0.228
+    - first:
+        name: _GlossyReflections
+      second: 1
     - first:
         name: _Metallic
       second: 0
@@ -97,6 +103,12 @@ Material:
     - first:
         name: _Parallax
       second: 0.005
+    - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
     - first:
         name: _SrcBlend
       second: 1
